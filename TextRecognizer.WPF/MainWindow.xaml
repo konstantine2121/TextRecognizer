@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextRecognizer.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TextRecognizer" Height="450" Width="800">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -14,13 +14,28 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        
-        <Button Grid.Row="0" x:Name="CopyImageFromClipbardButton" Content="Get image from clipboard" Click="CopyImageFromClipbardButton_Click"/>
+                
+        <Button Grid.Row="0" 
+                x:Name="CopyImageFromClipbardButton" 
+                Content="Get image from clipboard" 
+                Click="CopyImageFromClipbardButton_Click"/>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer Grid.Row="1" 
+                      VerticalScrollBarVisibility="Visible" 
+                      HorizontalScrollBarVisibility="Visible">
             <Image  x:Name="ClipboardDataImage" Stretch="None"/>
-        </ScrollViewer>            
+        </ScrollViewer>
+
+
+        <Button Grid.Row="2" 
+                x:Name="RecognizeTextButton" 
+                Content="Recognize text" 
+                Click="RecognizeTextButton_Click"/>
+
+        <TextBox Grid.Row="3" 
+                     x:Name="RecognizedTextOutputTextBox" 
+                     AcceptsReturn="True" VerticalScrollBarVisibility="Visible" 
+                     HorizontalScrollBarVisibility="Visible"/>
 
     </Grid>
 </Window>

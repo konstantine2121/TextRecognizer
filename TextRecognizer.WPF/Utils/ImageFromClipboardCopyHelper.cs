@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace TextRecognizer.WPF.Utils
@@ -10,7 +9,7 @@ namespace TextRecognizer.WPF.Utils
     {
         //https://thomaslevesque.com/2009/02/05/wpf-paste-an-image-from-the-clipboard/
 
-        public static bool TryGetImageFromClipboardDib(out ImageSource? imageSource)
+        public static bool TryGetImageFromClipboardDib(out BitmapFrame? bitmapFrame)
         {
             MemoryStream ms = Clipboard.GetData("DeviceIndependentBitmap") as MemoryStream;
             if (ms != null)
@@ -40,12 +39,12 @@ namespace TextRecognizer.WPF.Utils
                 msBitmap.Write(dibBuffer, 0, dibBuffer.Length);
                 msBitmap.Seek(0, SeekOrigin.Begin);
 
-                imageSource = BitmapFrame.Create(msBitmap);
+                bitmapFrame = BitmapFrame.Create(msBitmap);
 
                 return true;
             }
 
-            imageSource = null;
+            bitmapFrame = null;
 
             return false;
         }
@@ -80,7 +79,4 @@ namespace TextRecognizer.WPF.Utils
         }
 
     }
-
-    
-
 }

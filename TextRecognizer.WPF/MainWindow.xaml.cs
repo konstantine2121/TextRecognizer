@@ -1,14 +1,6 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Tesseract;
 
 namespace TextRecognizer.WPF
 {
@@ -17,29 +9,39 @@ namespace TextRecognizer.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ImageSource _currentImage;
+        private BitmapFrame? _currentFrame;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private Recognizer Recognizer { get; } = new Recognizer();
         
-
         private void CopyImageFromClipbardButton_Click(object sender, RoutedEventArgs e)
         {
-            if (TextRecognizer.WPF.Utils.ImageFromClipboardCopyHelper.TryGetImageFromClipboardDib(out var imageSource))
+            if (Utils.ImageFromClipboardCopyHelper.TryGetImageFromClipboardDib(out var imageSource))
             {
-                _currentImage = imageSource;
+                _currentFrame = imageSource;
             }
             else
             {
-                _currentImage = null;
+                _currentFrame = null;
             }
             
-            ClipboardDataImage.Source = _currentImage;
+            ClipboardDataImage.Source = _currentFrame;
         }
 
-       
+        private void RecognizeTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentFrame is null)
+            {
+                RecognizedTextOutputTextBox.Text = "No image to recognize!";
+            }
+            else
+            {
+                RecognizedTextOutputTextBox.Text = Recognizer.Recognize(_currentFrame, out _);
+            }
+        }
     }
 }
