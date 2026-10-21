@@ -10,29 +10,38 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-                
+
         <Button Grid.Row="0" 
+                x:Name="PerformFullRecognizeActionsButton" 
+                Content="Recognize text from clipboard" 
+                Click="PerformFullRecognizeActionsButton_Click"/>
+
+        <Button Grid.Row="2" 
                 x:Name="CopyImageFromClipbardButton" 
                 Content="Get image from clipboard" 
                 Click="CopyImageFromClipbardButton_Click"/>
 
-        <ScrollViewer Grid.Row="1" 
+        <ScrollViewer Grid.Row="3" 
                       VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Visible">
+            
             <Image  x:Name="ClipboardDataImage" Stretch="None"/>
         </ScrollViewer>
 
 
-        <Button Grid.Row="2" 
+        <Button Grid.Row="4" 
                 x:Name="RecognizeTextButton" 
                 Content="Recognize text" 
                 Click="RecognizeTextButton_Click"/>
 
-        <TextBox Grid.Row="3" 
+        <TextBox Grid.Row="6" 
                      x:Name="RecognizedTextOutputTextBox" 
                      AcceptsReturn="True" VerticalScrollBarVisibility="Visible" 
                      HorizontalScrollBarVisibility="Visible"/>

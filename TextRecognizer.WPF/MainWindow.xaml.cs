@@ -43,5 +43,11 @@ namespace TextRecognizer.WPF
                 RecognizedTextOutputTextBox.Text = Recognizer.Recognize(_currentFrame, out _);
             }
         }
+
+        private void PerformFullRecognizeActionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CopyImageFromClipbardButton_Click(sender, e);
+            RecognizeTextButton_Click(sender, e);
+        }
     }
 }
