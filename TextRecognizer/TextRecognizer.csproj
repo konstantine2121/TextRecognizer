@@ -8,17 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Tesseract" Version="5.2.0" />
+    <ProjectReference Include="..\TextRecognizer.Core\TextRecognizer.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="phototest.tif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="tessdata\eng.traineddata">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="tessdata\pdf.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
