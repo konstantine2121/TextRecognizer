@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TextRecognizer.Core.Recognizers;
 
 namespace TextRecognizer.WPF
 {
@@ -16,7 +16,7 @@ namespace TextRecognizer.WPF
             InitializeComponent();
         }
 
-        private Recognizer Recognizer { get; } = new Recognizer();
+        private SimpleEnglishRecognizer Recognizer { get; } = new SimpleEnglishRecognizer();
         
         private void CopyImageFromClipbardButton_Click(object sender, RoutedEventArgs e)
         {
