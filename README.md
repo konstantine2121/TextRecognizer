@@ -20,3 +20,7 @@ https://github.com/tesseract-ocr/tessdata/tree/main
 https://github.com/charlesw/tesseract-samples/tree/master/src/Tesseract.ConsoleDemo
 
 ----
+
+## How to use
+
+Build TextRecognizer.WPF and run it.
