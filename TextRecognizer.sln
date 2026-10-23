@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37710.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextRecognizer", "TextRecognizer\TextRecognizer.csproj", "{A6A66F04-9239-417C-AB79-FBC8BB329497}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextRecognizer.CLI", "TextRecognizer\TextRecognizer.CLI.csproj", "{A6A66F04-9239-417C-AB79-FBC8BB329497}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextRecognizer.Core", "TextRecognizer.Core\TextRecognizer.Core.csproj", "{DE122070-14EB-420B-8AC1-ABC93AAE6B85}"
 EndProject
