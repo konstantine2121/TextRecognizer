@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TextRecognizer.Core.Recognizers;
 
 namespace TextRecognizer.WPF
 {
@@ -10,13 +10,20 @@ namespace TextRecognizer.WPF
     public partial class MainWindow : Window
     {
         private BitmapFrame? _currentFrame;
+        private readonly IRecognizer _englishRecognizer;
+        private readonly IRecognizer _russianRecognizer;
 
         public MainWindow()
         {
             InitializeComponent();
+            _englishRecognizer = new SimpleEnglishRecognizer();
+            _russianRecognizer = new SimpleRussianRecognizer();
         }
 
-        private Recognizer Recognizer { get; } = new Recognizer();
+        private IRecognizer Recognizer => 
+            RussianRadioButton.IsChecked != null && RussianRadioButton.IsChecked.Value 
+                ? _russianRecognizer 
+                : _englishRecognizer;
         
         private void CopyImageFromClipbardButton_Click(object sender, RoutedEventArgs e)
         {

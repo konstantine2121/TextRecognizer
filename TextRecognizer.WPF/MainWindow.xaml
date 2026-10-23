@@ -10,6 +10,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -18,17 +19,24 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" 
+        <GroupBox Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <RadioButton x:Name="EnglishRadioButton" Content="English" IsChecked="True" />
+                <RadioButton x:Name="RussianRadioButton" Content="Russian" IsChecked="False" />
+            </StackPanel>
+        </GroupBox>
+
+        <Button Grid.Row="1" 
                 x:Name="PerformFullRecognizeActionsButton" 
                 Content="Recognize text from clipboard" 
                 Click="PerformFullRecognizeActionsButton_Click"/>
 
-        <Button Grid.Row="2" 
-                x:Name="CopyImageFromClipbardButton" 
+        <Button Grid.Row="3" 
+                x:Name="CopyImageFromClipboardButton" 
                 Content="Get image from clipboard" 
                 Click="CopyImageFromClipbardButton_Click"/>
 
-        <ScrollViewer Grid.Row="3" 
+        <ScrollViewer Grid.Row="4" 
                       VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Visible">
             
@@ -36,12 +44,12 @@
         </ScrollViewer>
 
 
-        <Button Grid.Row="4" 
+        <Button Grid.Row="5" 
                 x:Name="RecognizeTextButton" 
                 Content="Recognize text" 
                 Click="RecognizeTextButton_Click"/>
 
-        <TextBox Grid.Row="6" 
+        <TextBox Grid.Row="7" 
                      x:Name="RecognizedTextOutputTextBox" 
                      AcceptsReturn="True" VerticalScrollBarVisibility="Visible" 
                      HorizontalScrollBarVisibility="Visible"/>
