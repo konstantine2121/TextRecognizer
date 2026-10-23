@@ -3,7 +3,7 @@ using Tesseract;
 
 namespace TextRecognizer.Core.Recognizers
 {
-    public abstract class BaseRecognizer
+    public abstract class BaseRecognizer : IRecognizer
     {
         private const string ModelsDirectoryName = "tessdata";
 

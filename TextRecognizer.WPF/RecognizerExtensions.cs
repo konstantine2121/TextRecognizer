@@ -4,9 +4,9 @@ using TextRecognizer.WPF.Utils;
 
 namespace TextRecognizer.WPF
 {
-    public static class BaseRecognizerExtensions
+    public static class IRecognizerExtensions
     {
-        public static string Recognize(this BaseRecognizer recognizer, BitmapFrame frame, out float meanConfidence)
+        public static string Recognize(this IRecognizer recognizer, BitmapFrame frame, out float meanConfidence)
         {
             return recognizer.Recognize(frame.ConvertToMemoryStream(), out meanConfidence);
         }

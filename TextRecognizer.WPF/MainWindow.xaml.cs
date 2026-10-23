@@ -16,7 +16,7 @@ namespace TextRecognizer.WPF
             InitializeComponent();
         }
 
-        private SimpleEnglishRecognizer Recognizer { get; } = new SimpleEnglishRecognizer();
+        private IRecognizer Recognizer { get; } = new SimpleEnglishRecognizer();
         
         private void CopyImageFromClipbardButton_Click(object sender, RoutedEventArgs e)
         {
