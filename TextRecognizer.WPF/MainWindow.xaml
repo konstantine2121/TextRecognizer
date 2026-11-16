@@ -43,11 +43,28 @@
             <Image  x:Name="ClipboardDataImage" Stretch="None"/>
         </ScrollViewer>
 
+        <Grid Grid.Row="5">
 
-        <Button Grid.Row="5" 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                
                 x:Name="RecognizeTextButton" 
-                Content="Recognize text" 
-                Click="RecognizeTextButton_Click"/>
+                    Content="Recognize text" 
+                    Margin="0 0 5 0"
+                    Click="RecognizeTextButton_Click"/>
+
+            <Button Grid.Column="1"
+                    x:Name="RecognizeIpButton" 
+                    Content="IP"  
+                    Width="40"
+                    Click="RecognizeIpButton_Click"/>
+        </Grid>
+
+
 
         <TextBox Grid.Row="7" 
                      x:Name="RecognizedTextOutputTextBox" 
