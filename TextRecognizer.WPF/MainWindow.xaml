@@ -4,8 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextRecognizer.WPF"
+        xmlns:vms="clr-namespace:TextRecognizer.WPF.ViewModels"
         mc:Ignorable="d"
-        Title="TextRecognizer" Height="450" Width="800">
+        Title="TextRecognizer" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=vms:MainWindowVM, IsDesignTimeCreatable=True}"
+        >
+
+    <Window.DataContext>
+        <vms:MainWindowVM/>
+    </Window.DataContext>
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -29,18 +37,18 @@
         <Button Grid.Row="1" 
                 x:Name="PerformFullRecognizeActionsButton" 
                 Content="Recognize text from clipboard" 
-                Click="PerformFullRecognizeActionsButton_Click"/>
+                Command="{Binding Path=PerformCopyImageAndRecognizeTextCommand}"/>
 
         <Button Grid.Row="3" 
                 x:Name="CopyImageFromClipboardButton" 
                 Content="Get image from clipboard" 
-                Click="CopyImageFromClipbardButton_Click"/>
+                Command="{Binding Path=CopyImageFromClipbardCommand}"/>
 
         <ScrollViewer Grid.Row="4" 
                       VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Visible">
             
-            <Image  x:Name="ClipboardDataImage" Stretch="None"/>
+            <Image  x:Name="ClipboardDataImage" Stretch="None" Source="{Binding Path=CurrentFrame, Mode=OneWay}"/>
         </ScrollViewer>
 
         <Grid Grid.Row="5">
@@ -55,21 +63,21 @@
                 x:Name="RecognizeTextButton" 
                     Content="Recognize text" 
                     Margin="0 0 5 0"
-                    Click="RecognizeTextButton_Click"/>
+                    Command="{Binding Path=RecognizeTextCommand}"/>
 
             <Button Grid.Column="1"
                     x:Name="RecognizeIpButton" 
                     Content="IP"  
                     Width="40"
-                    Click="RecognizeIpButton_Click"/>
+                    Command="{Binding Path=RecognizeIpCommand}"/>
         </Grid>
 
-
-
         <TextBox Grid.Row="7" 
-                     x:Name="RecognizedTextOutputTextBox" 
-                     AcceptsReturn="True" VerticalScrollBarVisibility="Visible" 
-                     HorizontalScrollBarVisibility="Visible"/>
+                 x:Name="RecognizedTextOutputTextBox" 
+                 AcceptsReturn="True" 
+                 VerticalScrollBarVisibility="Visible" 
+                 HorizontalScrollBarVisibility="Visible"
+                 Text="{Binding Path=RecognizedText, Mode=OneWay}" />
 
     </Grid>
 </Window>

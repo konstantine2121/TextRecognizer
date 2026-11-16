@@ -1,6 +1,6 @@
 ﻿namespace TextRecognizer.WPF.Utils
 {
-    public static class TextFormatter
+    public static class RecognizedTextFormatter
     {
         public static string FormatAsIP(string text)
         {

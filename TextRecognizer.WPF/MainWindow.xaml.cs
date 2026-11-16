@@ -1,7 +1,4 @@
 ﻿using System.Windows;
-using TextRecognizer.WPF.Utils;
-using System.Windows.Media.Imaging;
-using TextRecognizer.Core.Recognizers;
 
 namespace TextRecognizer.WPF
 {
@@ -10,59 +7,9 @@ namespace TextRecognizer.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BitmapFrame? _currentFrame;
-        private readonly IRecognizer _englishRecognizer;
-        private readonly IRecognizer _russianRecognizer;
-
         public MainWindow()
         {
-            InitializeComponent();
-            _englishRecognizer = new SimpleEnglishRecognizer();
-            _russianRecognizer = new SimpleRussianRecognizer();
-        }
-
-        private IRecognizer Recognizer => 
-            RussianRadioButton.IsChecked != null && RussianRadioButton.IsChecked.Value 
-                ? _russianRecognizer 
-                : _englishRecognizer;
-        
-        private void CopyImageFromClipbardButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (Utils.ImageFromClipboardCopyHelper.TryGetImageFromClipboardDib(out var imageSource))
-            {
-                _currentFrame = imageSource;
-            }
-            else
-            {
-                _currentFrame = null;
-            }
-            
-            ClipboardDataImage.Source = _currentFrame;
-        }
-
-        private void RecognizeTextButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_currentFrame is null)
-            {
-                RecognizedTextOutputTextBox.Text = "No image to recognize!";
-            }
-            else
-            {
-                RecognizedTextOutputTextBox.Text = Recognizer.Recognize(_currentFrame, out _);
-            }
-        }
-
-        private void RecognizeIpButton_Click(object sender, RoutedEventArgs e)
-        {
-            RecognizeTextButton_Click(sender, e);
-            var text = RecognizedTextOutputTextBox.Text;
-            RecognizedTextOutputTextBox.Text = TextFormatter.FormatAsIP(text);             
-        }
-
-        private void PerformFullRecognizeActionsButton_Click(object sender, RoutedEventArgs e)
-        {
-            CopyImageFromClipbardButton_Click(sender, e);
-            RecognizeTextButton_Click(sender, e);
-        }
+            InitializeComponent();         
+        }       
     }
 }
